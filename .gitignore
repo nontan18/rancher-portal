@@ -1,2 +1,3 @@
-/https-portal
-!/https-portal/data/ssl_certs/.gitkeep
+# https-portal/*
+# !.gitkeep
+.DS_Store
