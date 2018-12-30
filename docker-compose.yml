@@ -3,13 +3,13 @@ services:
   https-portal:
     image: steveltn/https-portal:1
     ports:
-      - '8080:80'
-      - '8443:443'
+      - '80:80'
+      - '443:443'
     restart: always
     volumes:
       - ./https-portal/data/ssl_certs:/var/lib/https-portal
     environment:
-      DOMAINS: 'rancher2.nontan18.xyz -> http://rancher:443'
+      DOMAINS: 'rancher2.nontan18.xyz -> http://rancher:80'
       STAGE: 'production'
       WEBSOCKET: 'true'
     depends_on:
