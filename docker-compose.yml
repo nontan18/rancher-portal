@@ -9,7 +9,7 @@ services:
     volumes:
       - ./https-portal/data/ssl_certs:/var/lib/https-portal
     environment:
-      DOMAINS: 'rancher2.nontan18.xyz -> http://rancher:80'
+      DOMAINS: '${DOMAIN} -> http://rancher:80'
       STAGE: 'production'
       WEBSOCKET: 'true'
     depends_on:
