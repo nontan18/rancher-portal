@@ -1,0 +1,29 @@
+version: '3.1'
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '8080:80'
+      - '8443:443'
+    restart: always
+    volumes:
+      - ./https-portal/data/ssl_certs:/var/lib/https-portal
+    environment:
+      DOMAINS: 'rancher2.nontan18.xyz -> http://rancher:443'
+      STAGE: 'production'
+      WEBSOCKET: 'true'
+    depends_on:
+      - rancher
+
+  rancher:
+    image: rancher/rancher:stable
+    volumes:
+      - mysql:/var/lib/mysql
+      - mysql-log:/var/log/mysql
+      - cattle:/var/log/cattle
+    restart: unless-stopped
+
+volumes:
+  mysql:
+  mysql-log:
+  cattle:
