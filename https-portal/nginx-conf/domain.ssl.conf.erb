@@ -32,8 +32,17 @@ server {
 
     <% if domain.upstream %>
     location / {
+        proxy_set_header X-Nginx-Proxy true;
+        proxy_temp_file_write_size 64k;
+        proxy_connect_timeout 10080s;
+        proxy_send_timeout 10080;
+        proxy_read_timeout 10080;
+        proxy_buffer_size 64k;
+        proxy_buffers 16 32k;
+        proxy_busy_buffers_size 64k;
         proxy_request_buffering off;
         proxy_buffering off;
+        proxy_redirect off;
 
         <% if ENV['DYNAMIC_UPSTREAM'] && ENV['DYNAMIC_UPSTREAM'].downcase == 'true' %>
         set $backend <%= domain.upstream %>;
