@@ -16,14 +16,11 @@ services:
       - rancher
 
   rancher:
-    image: rancher/rancher:stable
+    image: rancher/rancher:latest
     volumes:
-      - mysql:/var/lib/mysql
-      - mysql-log:/var/log/mysql
-      - cattle:/var/log/cattle
+      - rancher_data:/var/lib/rancher
     restart: unless-stopped
 
 volumes:
-  mysql:
-  mysql-log:
-  cattle:
+  rancher_data:
+    driver: local
