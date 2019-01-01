@@ -1,4 +1,5 @@
 https-portal/data/*
+rancher/data/*
 ! htttps-portal/Dockerfile
 !.gitkeep
 .DS_Store
