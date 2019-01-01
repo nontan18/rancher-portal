@@ -8,6 +8,6 @@ $ DOMAIN=YOUR_DOMAIN
 $ docker run --rm \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
     -v $PWD:/code:ro \
-    -e DOMAIN=$DOMAIN
+    -e DOMAIN=$DOMAIN \
     wernight/docker-compose up
 ```
