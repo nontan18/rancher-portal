@@ -3,9 +3,9 @@ services:
   https-portal:
     # image: steveltn/https-portal:1
     build: ./https-portal/
-    ports:
-      - '80:80'
-      - '443:443'
+    # ports:
+    #   - '80:80'
+    #   - '443:443'
     restart: always
     volumes:
       - ./https-portal/data/ssl_certs:/var/lib/https-portal
@@ -18,6 +18,9 @@ services:
       - rancher
 
   rancher:
+    ports:
+      - '80:80'
+      - '443:443'
     image: rancher/rancher:latest
     volumes:
       - rancher_data:/var/lib/rancher
