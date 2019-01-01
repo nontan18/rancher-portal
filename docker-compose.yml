@@ -1,7 +1,8 @@
 version: '3.1'
 services:
   https-portal:
-    image: steveltn/https-portal:1
+    # image: steveltn/https-portal:1
+    build: ./https-portal/
     ports:
       - '80:80'
       - '443:443'
@@ -10,7 +11,8 @@ services:
       - ./https-portal/data/ssl_certs:/var/lib/https-portal
     environment:
       DOMAINS: '${DOMAIN} -> http://rancher:80'
-      STAGE: 'production'
+      STAGE: production
+      # STAGE: local
       WEBSOCKET: 'true'
     depends_on:
       - rancher

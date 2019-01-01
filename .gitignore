@@ -1,3 +1,4 @@
-https-portal/*
+https-portal/data/*
+! htttps-portal/Dockerfile
 !.gitkeep
 .DS_Store
