@@ -1,4 +1,5 @@
 https-portal/data/*
+https-portal/nginx-conf/*
 rancher/data/*
 ! htttps-portal/Dockerfile
 !.gitkeep
