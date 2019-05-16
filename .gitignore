@@ -1,6 +1,6 @@
 apps/https-portal/data/ssl_certs/*
 !apps/https-portal/data/ssl_certs/.gitkeep
-apps/https-portal/nginx-conf/*
+!apps/https-portal/nginx-conf/*
 apps/rancher/data/*
 ! apps/htttps-portal/Dockerfile
 !.gitkeep
