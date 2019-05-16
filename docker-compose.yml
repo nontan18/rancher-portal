@@ -1,34 +1,24 @@
 version: '3.1'
 services:
   https-portal:
-    # image: steveltn/https-portal:1
     build: ./https-portal
     ports:
       - '80:80'
       - '443:443'
     restart: always
     volumes:
-      - ./https-portal/nginx-conf/domain.conf.erb:/var/lib/nginx-conf/${DOMAIN}.conf.erb:ro
-      - ./https-portal/nginx-conf/domain.ssl.conf.erb:/var/lib/nginx-conf/${DOMAIN}.ssl.conf.erb:ro
-      - ./https-portal/data/ssl_certs:/var/lib/https-portal
+      - ./apps/https-portal/nginx-conf/domain.conf.erb:/var/lib/nginx-conf/${DOMAIN}.conf.erb:ro
+      - ./apps/https-portal/nginx-conf/domain.ssl.conf.erb:/var/lib/nginx-conf/${DOMAIN}.ssl.conf.erb:ro
+      - ./apps/https-portal/data/ssl_certs:/var/lib/https-portal
     environment:
       DOMAINS: '${DOMAIN} -> http://rancher:80'
-      # STAGE: staging
       STAGE: production
       WEBSOCKET: 'true'
     depends_on:
       - rancher
 
   rancher:
-    # ports:
-    #  - '80:80'
-    #  - '443:443'
     image: rancher/rancher:latest
     volumes:
-      - ./rancher/data:/var/lib/rancher
-      # - rancher_data:/var/lib/rancher
+      - ./apps/rancher/data:/var/lib/rancher
     restart: always
-
-# volumes:
-#   rancher_data:
-#     driver: local

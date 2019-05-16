@@ -1,6 +1,7 @@
-https-portal/data/*
-https-portal/nginx-conf/*
-rancher/data/*
-! htttps-portal/Dockerfile
+apps/https-portal/data/ssl_certs/*
+!apps/https-portal/data/ssl_certs/.gitkeep
+!apps/https-portal/nginx-conf/*
+apps/rancher/data/*
+! apps/htttps-portal/Dockerfile
 !.gitkeep
 .DS_Store
